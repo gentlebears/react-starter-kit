@@ -1,30 +1,51 @@
-// import logo from './logo.svg';
-import styles from './App.module.css';
-import Test from './Test';
-import { Title } from './Components';
-import Bootstrap from './Bootstrap';
-import Tailwind from './Tailwind';
+import { createElement } from 'react';
 import './style.scss';
-// import './tailwind.css';
+
+function Button(props) {
+	return <button>{props.text}</button>;
+}
 
 function App() {
+	const todos = ['todo1', 'todo2', 'todo3'];
+	/*
+	const ul = createElement(
+		'ul',
+		null,
+		todos.map((todo) => createElement('li', null, todo)),
+	);
+	const h1 = createElement('h1', null, 'gentle.com');
+	return createElement(
+		'main',
+		{
+			className: 'test',
+			id: 'main',
+		},
+		h1,
+		ul,
+	);
+*/
+
+	const searchFuntion = () => {
+		alert('hello');
+	};
 	return (
-		<div className={styles.App}>
-			<Title>{process.env.NODE_ENV}</Title>
-			<p className='env'>
-				<span>Test</span>
-			</p>
-			<Title theme='dark'>{process.env.NODE_ENV}</Title>
-			<p>{process.env.REACT_APP_API_URL}: Test</p>
-			<Test />
-			{process.env.NODE_ENV === 'production' && (
-				<>
-					<img src='/logo192.png' alt='' />
-				</>
-			)}
-			<Bootstrap />
-			<Tailwind />
-		</div>
+		<>
+			<Button text='Merhaba Buton' />
+			<main className='test' id='main'>
+				<h1 tabIndex='3' style={{ color: 'red', backgroundColor: 'yellow' }}>
+					gentle.com
+				</h1>
+				<label htmlFor='search' tabIndex='2' onClick={searchFuntion}>
+					Arama
+				</label>
+				<input type='text' id='search' tabIndex='1' />
+				<ul>
+					{todos.map((todo, index) => (
+						<li key={index}>{todo}</li>
+					))}
+				</ul>
+			</main>
+		</>
 	);
 }
 

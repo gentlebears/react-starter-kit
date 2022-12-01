@@ -1,9 +1,6 @@
 import { createElement } from 'react';
-import './style.scss';
-
-function Button(props) {
-	return <button>{props.text}</button>;
-}
+import Button from './components/Button';
+import './tailwind.css';
 
 function App() {
 	const todos = ['todo1', 'todo2', 'todo3'];
@@ -30,7 +27,13 @@ function App() {
 	};
 	return (
 		<>
-			<Button text='Merhaba Buton' />
+			<div style={{ padding: 20 }}>
+				<Button>Buton Örneği</Button>
+				<Button text='Buton Örneği' variant='success' />
+				<Button text='Buton Örneği' variant='danger' />
+				<Button text='Buton Örneği' variant='warning' />
+			</div>
+
 			<main className='test' id='main'>
 				<h1 tabIndex='3' style={{ color: 'red', backgroundColor: 'yellow' }}>
 					gentle.com

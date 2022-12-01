@@ -1,9 +1,16 @@
-import { createElement } from 'react';
+import { createElement, useState } from 'react';
 import Button from './components/Button';
 import './tailwind.css';
+import Tab from './components/Tab';
+
+function Profile() {
+	return <div>Burası profile tabı</div>;
+}
 
 function App() {
 	const todos = ['todo1', 'todo2', 'todo3'];
+
+	const [activeTab, setActiveTab] = useState();
 	/*
 	const ul = createElement(
 		'ul',
@@ -28,10 +35,22 @@ function App() {
 	return (
 		<>
 			<div style={{ padding: 20 }}>
+				<button onClick={() => setActiveTab(2)}>Aktif Tabı Değiştir</button>
+				<Tab activeTab={activeTab} onChange={(tabIndex) => setActiveTab(tabIndex)}>
+					<Tab.Panel title='Profil'>
+						<Profile />
+					</Tab.Panel>
+					<Tab.Panel title='Hakkında'>2. tab</Tab.Panel>
+					<Tab.Panel title='Ayarlar'>3. tab</Tab.Panel>
+				</Tab>
+				{activeTab === 2 && <div>Ekstra Alan</div>}
+			</div>
+
+			<div style={{ padding: 20 }}>
 				<Button>Buton Örneği</Button>
-				<Button text='Buton Örneği' variant='success' />
-				<Button text='Buton Örneği' variant='danger' />
-				<Button text='Buton Örneği' variant='warning' />
+				<Button variant='success'>Buton Örneği</Button>
+				<Button variant='danger'>Buton Örneği</Button>
+				<Button variant='warning'>Buton Örneği</Button>
 			</div>
 
 			<main className='test' id='main'>
